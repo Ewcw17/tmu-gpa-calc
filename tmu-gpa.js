@@ -52,7 +52,8 @@ class DegreeTerm {
     {
         return (sum_allyears_gpa/this.numberofyears);
     }
-    get_average_mark( ){
+    get_average_mark( )
+    {
         // to be continued
 
     }
@@ -63,7 +64,8 @@ class DegreeTerm {
     sum_years_gpa() // get the sum of all years to be used in get_cum_gpa --> will use array here
     {
         let sum = 0;
-        for (const i of this.year_array) {
+        for (const i of this.year_array)
+         {
             sum += i.gpa; // will be defined in Year GPA
         }
     }
