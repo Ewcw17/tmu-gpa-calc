@@ -1,37 +1,35 @@
-/* / # Getting Started with Javascript
+// # Getting Started with Javascript
 // ## Developing the core module in javascript for the TMU GPA App
 // ### Layout
 
 // #### Inspired by Excel File
 // * **DegreeTerm (object)** &larr; **highest object on the hierarchy** 
-//     
-//     * numyears Done
-//     * cumulative GPA Done C(calculated in a function)
+//     * numyears
+//     * cumulative GPA
 //     * **collection of Year objects of count (numyears)**
-//     * name of degree - optional Done
-//     * fail_gpa - optional may add later and find a better way to add
-//     * probation_gpa - optional may add later and find a better way to add
+//     * name of degree - optional
+//     * fail_gpa
+//     * probation_gpa
 
 //         * **Year (object)**
-//             * numsemesters - input don
-//             * cumulative GPA - calculated (In progress)
-//             * **collection of semesters objects of count (numsemesters)** - create a function
-//             * year number input done
+//             * numsemesters
+//             * cumulative GPA
+//             * **collection of semesters objects of count (numsemesters)**
+//             * year number 
 //                 * **Semester (object)**
 //                     * numcourses
-//                     * cumulative GPA (In progress)
+//                     * cumulative GPA
 //                     * collection of course objects of count (numcourses)
 //                     * semester number
 //                     * max gpa attainable
-//                     * IsActive 
-//                         * **Course (object)** Ethan
+//                         * **Course (object)**
 //                             * numassessments
 //                             * GPA
 //                             * **collection of Assessment objects of count (numassessments)**
 //                             * coursename
 //                             * max gpa attainable
-//                                  * **Assessment (object)** &larr; Simplest Object Ethan
+//                                  * **Assessment (object)** &larr; Simplest Object 
 //                                             * weight
 //                                             * mark
 //                                             * name
-                         
+// Working on it                         
