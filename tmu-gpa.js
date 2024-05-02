@@ -60,7 +60,7 @@ class DegreeTerm {
     {
         this.year_array.push(Year)
     }
-    sum_years_gpa() // get the sum of all years to be used in get_cum_gpa --> will use array 
+    sum_years_gpa() // get the sum of all years to be used in get_cum_gpa --> will use array here
     {
         let sum = 0;
         for (const i of this.year_array) {
