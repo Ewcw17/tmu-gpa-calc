@@ -33,3 +33,91 @@
 //                                             * mark
 //                                             * name
 // Working on it                         
+
+class DegreeTerm {
+    constructor(nameofdegree)
+    {
+        this.nameofdegree = nameofdegree;
+        this.numberofyears = 0
+        this.year_array =  new Array();
+        
+    }
+    add_year(Year){
+        this.year_array.push(Year);
+        this.numberofyears++;
+    }
+    get_sum_yearlygpa(){
+
+    }
+    get_mark()
+    {
+
+    }
+    get_cum_gpa (sum_allyears_gpa)
+    {
+        // to be conituded
+        return (sum_allyears_gpa/this.numberofyears);
+    }
+
+}
+class Year {
+
+    constructor(yearnumber)
+    {
+        this.yearnumber = yearnumber;
+        this.semester_array =  new Array();
+        this.semester_count++;
+    }
+    add_year(Semester){
+        this.semester_array.push(Semester);
+    }
+    get_mark()
+    {
+        
+    }
+    get_sum_sem_gpa(){
+        // to be continued
+    }
+    get_cum_gpa(sum_allsem_gpa) 
+    {
+        return (sum_allsem_gpa/this.numberofyears);
+    }
+}
+
+class Semester 
+{
+    //code
+}
+
+class Course
+{
+    //code
+}
+
+class Assessment
+{
+    //code
+}
+
+console.log("Testing out Year Class");
+let d = new DegreeTerm("Computer Engineer");
+console.log (d);
+curryear = 1;
+let y = new Year(curryear)
+d.add_year(y);
+d.add_year(y);
+d.add_year(y);
+d.add_year(y);
+console.log (d);
+
+console.log("Testing out Year Class");
+let y1 = new Year(1);
+console.log (y1);
+curryear = 1;
+let s1 = new Semester()
+y1.add_year(s1);
+y1.add_year(s1);
+y1.add_year(s1);
+y1.add_year(s1);
+console.log (s1)
+console.log (y1);
