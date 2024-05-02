@@ -34,7 +34,6 @@
 //                                             * weight
 //                                             * mark
 //                                             * name
-<<<<<<< HEAD
                                                * letter grade - maybe a function 
 
 */
@@ -113,6 +112,3 @@ class Assessment {
 
 
 }
-=======
-// Working on it                         
->>>>>>> 2e1edd07f2f663badbfd876be5af3919651ed0c7
