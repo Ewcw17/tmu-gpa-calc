@@ -30,12 +30,15 @@
 // Working on it  
 
 const {GradeTable} = require('./GradeTable');
+
+gradetable = new GradeTable;
+
 class DegreeTerm {
     constructor(nameofdegree)
     {
         this.nameofdegree = nameofdegree;
         this.numberofyears = 0
-        this.year_array =  new Array();
+        this.year_array = new Array();
         
     }
     add_year(Year){
@@ -57,8 +60,8 @@ class Year {
     constructor(yearnumber)
     {
         this.yearnumber = yearnumber; // what year is it --> like First year
-        this.semester_array =  new Array();
-        this.semester_count=0;
+        this.semester_array = new Array();
+        this.semester_count = 0;
     }
     add_year(Semester)
     {
@@ -79,13 +82,15 @@ class Year {
 
 class Semester 
 {
-    constructor (gpa) //just made to finish my methods above rewrite when needed
+    constructor (gpa, num_courses) //just made to finish my methods above rewrite when needed
     {
     this.gpa = gpa; // should be cumulative gpa 
+    this.num_courses = num_courses;
+    this.semnum = 0
 
     }// This is just a test  
 
-   // needs to have
+    // needs to have
     // * cumulative GPA
     // * collection of course objects of count (numcourses)
     // * semester numbe
@@ -96,27 +101,45 @@ class Semester
 
 class Course
 {
-    //code
-    // weighted average
-    // letter grade corresponding to weighted average
-    // GPA according to weighted average
-    // (weighted average as input) -->  function --> ( [GPA or letter] output) --> use grades_table unless you find a more efficient way dm me if you need help
-    // Course name
-    // is Course mandatory ---> boolean --> used toward cgpa
+    constructor(name, num_assessments, required){
+        this.name = name;
+        this.num_assessments = num_assessments;
+        this.required = required;
+        this.assessments = new Array();
+        this.weighted_average = 0
+        this.gpa = 0;
+        this.letter_grade = "";
+    }
 
+    add_assessment(Assessment){
+        this.assessments.push(Assessment);
+        this.num_assessments++;
+    }
 
+    get_weighted_average()
+    {
+        let i = 0;
+        this.weighted_average = 0;
+        for(i = 0; i <= this.assessments.length; i++)
+        {
+            current_assessment = this.assessments[i];
+            this.weighted_average += (current_assessment.grade * current_assessment.weight * 0.01) //multiplying by 0.01 to convert to decimal
+        }
+        this.gpa = gradetable.get_gpa(this.weighted_average);
+        this.letter_grade = gradetable.get_letter_grade(this.gpa);
+        return this.weighted_average;
+    }
 }
 
 class Assessment
 {
-    //code
-    //Specifications // must have
-    // grade    
-    // weight
-    // name of assessment
+    constructor(assessment, grade, weight)
+    {
+        this.assessment = assessment; // A name
+        this.grade = grade; //In the form of a percentage
+        this.weight = weight; //In the form of a percentage
+    }
 }
-
-
 
 console.log("Testing out Year Class");
 let y1 = new Year(1);
@@ -130,7 +153,7 @@ y1.add_year(s1);
 y1.add_year(s2);
 y1.add_year(s3);
 y1.add_year(s4);
-console.log (s1)
+console.log (s1);
 console.log (y1);
 
 console.log("Testing out DegreeTerm Class");

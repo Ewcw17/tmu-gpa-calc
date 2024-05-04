@@ -52,7 +52,7 @@ class GradeTable {
         };
         this.B =
         {
-            gpa: 4.00,
+            gpa: 3.00,
             perc: {
                 from: 73,
                 to: 76
@@ -92,7 +92,7 @@ class GradeTable {
         };
         this.D_plus =
         {
-            gpa: 1.67,
+            gpa: 1.33,
             perc: {
                 from: 57,
                 to: 59
@@ -100,7 +100,7 @@ class GradeTable {
         };
         this.D =
         {
-            gpa: 1.67,
+            gpa: 1.00,
             perc: {
                 from: 53,
                 to: 56
@@ -108,7 +108,7 @@ class GradeTable {
         };
         this.D_min =
         {
-            gpa: 1.67,
+            gpa: 0.67,
             perc: {
                 from: 50,
                 to: 52
@@ -116,12 +116,25 @@ class GradeTable {
         };
         this.F =
         {
-            gpa: 1.67,
+            gpa: 0,
             perc: {
                 from: 0,
                 to: 49
             }
         };
+    }
+    get_gpa(average) {
+        let gpa = 0;
+        let grade_array = [this.F, this.D_min, this.D, this.D_plus, this.C_min, this.C, this.C_plus, this.B_min, this.B, this.B_plus, this.A_min, this.A, this.A_plus];
+        let i = 0;
+
+        for(i = 0; i < grade_array.length; i++){
+            if(average >= grade_array[i].perc.from && average <= grade_array[i].perc.to)
+            {
+                gpa = grade_array[i].gpa;
+            }
+        }
+        return gpa;
     }
     get_letter_grade(gpa) {
         let letter = "NF";
