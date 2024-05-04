@@ -70,6 +70,7 @@ class Year {
        let sum = 0;
        for (const iterator of this.semester_array) 
        {
+            iterator.get_term_gpa(); //This is here to set the value of semester.gpa
             sum +=  iterator.gpa
        }
        return sum/this.semester_count;
@@ -79,11 +80,39 @@ class Year {
 
 class Semester 
 {
+<<<<<<< Updated upstream
     constructor (gpa) //just made to finish my methods above rewrite when needed
     {
     this.gpa = gpa; // should be cumulative gpa 
 
     }// This is just a test  
+=======
+    constructor (sem_season, semnum) //just made to finish my methods above rewrite when needed
+    {
+    this.sem_season = sem_season; //Like Fall, Winter, Spring or Summer
+    this.semnum = semnum; //Which semester, like semester 1, 2, 3, etc
+    this.num_courses = 0;
+    this.course_array = new Array();
+    this.gpa = 0;
+    this.letter_grade = "F";
+    }
+    add_course(Course)
+    {
+        this.course_array.push(Course);
+        this.num_courses++;
+    }
+    get_term_gpa() //Gets the weighted average, gpa and letter grade all at once
+    {
+        for(const course of this.course_array)
+        {
+            course.get_weighted_average();
+            this.gpa += course.gpa;
+        }
+        this.gpa = this.gpa/this.num_courses;
+        this.letter_grade = gradetable.get_letter_grade(this.gpa);
+        return this.gpa;
+    }
+>>>>>>> Stashed changes
 
    // needs to have
     // * cumulative GPA
@@ -96,6 +125,7 @@ class Semester
 
 class Course
 {
+<<<<<<< Updated upstream
     //code
     // weighted average
     // letter grade corresponding to weighted average
@@ -105,6 +135,36 @@ class Course
     // is Course mandatory ---> boolean --> used toward cgpa
 
 
+=======
+    constructor(name, num_assessments, required){
+        this.name = name;
+        this.num_assessments = num_assessments;
+        this.required = required;
+        this.assessment_array = new Array();
+        this.weighted_average = 0
+        this.gpa = 0;
+        this.letter_grade = "F";
+    }
+
+    add_assessment(Assessment){
+        this.assessment_array.push(Assessment);
+        this.num_assessments++;
+    }
+
+    get_weighted_average() //gpa, weighted_average and letter grade are determined all at once with this function
+    {
+        let i = 0;
+        this.weighted_average = 0;
+        for(i = 0; i < this.assessment_array.length; i++)
+        {
+            let current_assessment = this.assessment_array[i];
+            this.weighted_average += (current_assessment.grade * current_assessment.weight * 0.01) //multiplying by 0.01 to convert to decimal
+        }
+        this.gpa = gradetable.get_gpa(this.weighted_average);
+        this.letter_grade = gradetable.get_letter_grade(this.gpa);
+        return this.weighted_average;
+    }
+>>>>>>> Stashed changes
 }
 
 class Assessment
@@ -144,3 +204,21 @@ console.log (d);
 console.log("GPA for year 1: " + y1.get_cum_gpa()) // Dont make no jokes eyy
 c = new GradeTable()
 console.log("Letter Grade corresponding to GPA above: " + c.get_letter_grade(y1.get_cum_gpa()))
+
+console.log("Testing out Semester/course/assessment classes");
+// I probably messed up your previous test cases
+let sem1 = new Semester("Winter", 3);
+let cour1 = new Course("COE 318", 3, true);
+let cour2 = new Course("COE 328", 2, true);
+cour1.add_assessment(new Assessment("Quizzes", 89, 20));
+cour1.add_assessment(new Assessment("Midterm", 67, 30));
+cour1.add_assessment(new Assessment("Final", 87, 50));
+sem1.add_course(cour1);
+cour2.add_assessment(new Assessment("Midterm", 77, 40));
+cour2.add_assessment(new Assessment("Final", 65, 60));
+sem1.add_course(cour2);
+console.log(cour1.get_weighted_average());
+console.log(cour1.gpa);
+console.log(cour2.get_weighted_average());
+console.log(cour2.gpa);
+console.log(sem1.get_term_gpa()); //Expected output 3.17
