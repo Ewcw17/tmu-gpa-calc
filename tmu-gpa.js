@@ -30,7 +30,8 @@
 // Working on it  
 
 const {GradeTable} = require('./GradeTable');
-class DegreeTerm {
+class DegreeTerm
+ {
     constructor(nameofdegree)
     {
         this.nameofdegree = nameofdegree;
@@ -52,7 +53,8 @@ class DegreeTerm {
     }
 
 }
-class Year {
+class Year 
+{
 
     constructor(yearnumber)
     {
@@ -80,13 +82,6 @@ class Year {
 
 class Semester 
 {
-<<<<<<< Updated upstream
-    constructor (gpa) //just made to finish my methods above rewrite when needed
-    {
-    this.gpa = gpa; // should be cumulative gpa 
-
-    }// This is just a test  
-=======
     constructor (sem_season, semnum) //just made to finish my methods above rewrite when needed
     {
     this.sem_season = sem_season; //Like Fall, Winter, Spring or Summer
@@ -109,10 +104,10 @@ class Semester
             this.gpa += course.gpa;
         }
         this.gpa = this.gpa/this.num_courses;
+        let gradetable = new GradeTable();
         this.letter_grade = gradetable.get_letter_grade(this.gpa);
         return this.gpa;
     }
->>>>>>> Stashed changes
 
    // needs to have
     // * cumulative GPA
@@ -125,17 +120,6 @@ class Semester
 
 class Course
 {
-<<<<<<< Updated upstream
-    //code
-    // weighted average
-    // letter grade corresponding to weighted average
-    // GPA according to weighted average
-    // (weighted average as input) -->  function --> ( [GPA or letter] output) --> use grades_table unless you find a more efficient way dm me if you need help
-    // Course name
-    // is Course mandatory ---> boolean --> used toward cgpa
-
-
-=======
     constructor(name, num_assessments, required){
         this.name = name;
         this.num_assessments = num_assessments;
@@ -160,20 +144,21 @@ class Course
             let current_assessment = this.assessment_array[i];
             this.weighted_average += (current_assessment.grade * current_assessment.weight * 0.01) //multiplying by 0.01 to convert to decimal
         }
+        let gradetable = new GradeTable();
         this.gpa = gradetable.get_gpa(this.weighted_average);
         this.letter_grade = gradetable.get_letter_grade(this.gpa);
         return this.weighted_average;
     }
->>>>>>> Stashed changes
 }
 
 class Assessment
 {
-    //code
-    //Specifications // must have
-    // grade    
-    // weight
-    // name of assessment
+    constructor(assessment, grade, weight)
+    {
+        this.assessment = assessment; // A name
+        this.grade = grade; //In the form of a percentage
+        this.weight = weight; //In the form of a percentage
+    }
 }
 
 
