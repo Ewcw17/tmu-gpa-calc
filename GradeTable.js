@@ -123,8 +123,6 @@ class GradeTable {
             }
         };
     }
-<<<<<<< Updated upstream
-=======
     get_gpa(average) {
         let gpa = 0;
         let grade_array = [this.F, this.D_min, this.D, this.D_plus, this.C_min, this.C, this.C_plus, this.B_min, this.B, this.B_plus, this.A_min, this.A, this.A_plus];
@@ -139,7 +137,6 @@ class GradeTable {
         }
         return gpa;
     }
->>>>>>> Stashed changes
     get_letter_grade(gpa) {
         let letter = "NF";
 
