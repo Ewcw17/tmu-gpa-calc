@@ -8,7 +8,7 @@ class DegreeTerm
         this.nameofdegree = nameofdegree;
         this.numberofyears = 0
         this.year_array =  new Array();
-        
+   
     }
     add_year(Year){
         this.year_array.push(Year);
@@ -72,19 +72,8 @@ class Semester
         this.course_array.push(Course);
         this.num_courses++;
     }
-    // get_course_index(name){
-    //     let key = -12;
-    //     for (let index = 0; index < this.course_array.length; index++) {
-    //         if(this.course_array[index] == name)
-    //             {
-    //                 key = index;
-    //                 index = 1000
-    //             }
-            
-    //     }
-    // }
+
     get_course(name){
-        // return this.course_array[this.get_course_index(course)];
         return this.course_array.find(course => course.name === name)
     }
     get_term_gpa() //Gets the weighted average, gpa and letter grade all at once
@@ -100,13 +89,7 @@ class Semester
         return this.gpa;
     }
 
-   // needs to have
-    // * cumulative GPA
-    // * collection of course objects of count (numcourses)
-    // * semester numbe
-    // GPA according to weighted average
-    // (weighted average as input) -->  function --> ( [GPA or letter] output) --> use grades_table unless you find a more efficient way dm me if you need help
-    // * What section --> fall, winter, (summer or spring)  --> maybe an object and function that sets what what section the semester is
+ 
 }
 
 class Course
