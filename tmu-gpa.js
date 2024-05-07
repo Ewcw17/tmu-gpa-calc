@@ -1,33 +1,4 @@
-// For ethan - the grades table is mostly for transferring weighted average to gpa or letter grade 
-// # Getting Started with Javascript
-// ## Developing the core module in javascript for the TMU GPA App
-// ### Layout
-// #### Inspired by Excel File
-// * **DegreeTerm (object)** &larr; **highest object on the hierarchy** 
-//     * numyears
-//     * cumulative GPA
-//     * **collection of Year objects of count (numyears)**
-//     * name of degree - optional
-//     * fail_gpa
-//     * probation_gpa
-//         * **Year (object)**
-//             * numsemesters
-//             * cumulative GPA
-//             * **collection of semesters objects of count (numsemesters)**
-//             * year number 
-//                 * **Semester (object)**
-//                   
-//                         * **Course (object)**
-//                             * numassessments
-//                             * GPA
-//                             * **collection of Assessment objects of count (numassessments)**
-//                             * coursename
-//                             * max gpa attainable
-//                                  * **Assessment (object)** &larr; Simplest Object 
-//                                             * weight
-//                                             * mark
-//                                             * name
-// Working on it  
+
 
 const {GradeTable} = require('./GradeTable');
 class DegreeTerm
@@ -51,7 +22,9 @@ class DegreeTerm
        }
        return sum/this.semester_count;
     }
-
+    get_year(yearnum){
+        return this.year_array.find(year => year.yearnumber === yearnum)
+    }
 }
 class Year 
 {
@@ -62,10 +35,13 @@ class Year
         this.semester_array =  new Array();
         this.semester_count=0;
     }
-    add_year(Semester)
+    add_semester(Semester)
     {
         this.semester_array.push(Semester);
         this.semester_count++;
+    }
+    get_semester(semnum){
+        return this.semester_array.find(semester => semester.semnum === semnum)
     }
     get_cum_gpa()
     {
@@ -89,12 +65,27 @@ class Semester
     this.num_courses = 0;
     this.course_array = new Array();
     this.gpa = 0;
-    this.letter_grade = "F";
+    this.letter_grade = "F"; // How can we change this
     }
     add_course(Course)
     {
         this.course_array.push(Course);
         this.num_courses++;
+    }
+    // get_course_index(name){
+    //     let key = -12;
+    //     for (let index = 0; index < this.course_array.length; index++) {
+    //         if(this.course_array[index] == name)
+    //             {
+    //                 key = index;
+    //                 index = 1000
+    //             }
+            
+    //     }
+    // }
+    get_course(name){
+        // return this.course_array[this.get_course_index(course)];
+        return this.course_array.find(course => course.name === name)
     }
     get_term_gpa() //Gets the weighted average, gpa and letter grade all at once
     {
@@ -135,6 +126,9 @@ class Course
         this.num_assessments++;
     }
 
+    get_assessment(name){
+        return this.assessment_array.find(assessment => assessment.name = name)
+    }
     get_weighted_average() //gpa, weighted_average and letter grade are determined all at once with this function
     {
         let i = 0;
@@ -153,57 +147,14 @@ class Course
 
 class Assessment
 {
-    constructor(assessment, grade, weight)
+    constructor(name, grade, weight)
     {
-        this.assessment = assessment; // A name
+        this.name = name; // A name
         this.grade = grade; //In the form of a percentage
         this.weight = weight; //In the form of a percentage
     }
+
 }
 
 
-
-console.log("Testing out Year Class");
-let y1 = new Year(1);
-console.log (y1);
-curryear = 1;
-let s1 = new Semester(3.2)
-let s2 = new Semester(3.3)
-let s3 = new Semester(3.6)
-let s4 = new Semester(3.7)
-y1.add_year(s1);
-y1.add_year(s2);
-y1.add_year(s3);
-y1.add_year(s4);
-console.log (s1)
-console.log (y1);
-
-console.log("Testing out DegreeTerm Class");
-let d = new DegreeTerm("Computer Engineer");
-console.log (d);
-curryear = 1;
-let y = new Year(curryear)
-d.add_year(y1); // adding the year array with
-d.add_year(y);
-console.log (d);
-console.log("GPA for year 1: " + y1.get_cum_gpa()) // Dont make no jokes eyy
-c = new GradeTable()
-console.log("Letter Grade corresponding to GPA above: " + c.get_letter_grade(y1.get_cum_gpa()))
-
-console.log("Testing out Semester/course/assessment classes");
-// I probably messed up your previous test cases
-let sem1 = new Semester("Winter", 3);
-let cour1 = new Course("COE 318", 3, true);
-let cour2 = new Course("COE 328", 2, true);
-cour1.add_assessment(new Assessment("Quizzes", 89, 20));
-cour1.add_assessment(new Assessment("Midterm", 67, 30));
-cour1.add_assessment(new Assessment("Final", 87, 50));
-sem1.add_course(cour1);
-cour2.add_assessment(new Assessment("Midterm", 77, 40));
-cour2.add_assessment(new Assessment("Final", 65, 60));
-sem1.add_course(cour2);
-console.log(cour1.get_weighted_average());
-console.log(cour1.gpa);
-console.log(cour2.get_weighted_average());
-console.log(cour2.gpa);
-console.log(sem1.get_term_gpa()); //Expected output 3.17
+module.exports = { Course, Assessment,Semester,Year,DegreeTerm };
