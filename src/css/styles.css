@@ -13,7 +13,7 @@
   }
   header {
     font-size: 1.5rem;
-    color: rgb(33, 33, 33);
+    color: rgb(180, 180, 180);
   }
 
   header,
@@ -34,6 +34,11 @@
     border: none;
     /* background: white; */
     font-size: 2rem;
+  } 
+  input[type="text"], textarea {
+
+    background-color : rgb(255, 255, 255); 
+  
   }
   
   form button {
@@ -96,6 +101,7 @@
   }
   .todo-item {
     padding: 0rem 0.5rem;
+    align-items: center;
   }
   .completed {
     text-decoration: line-through;
