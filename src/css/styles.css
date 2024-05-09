@@ -5,18 +5,20 @@
   }
   
   body {
-    background: linear-gradient(120deg, rgb(226, 207, 129), rgb(232, 139, 97));
+    /* background: linear-gradient(120deg, rgb(226, 207, 129), rgb(232, 139, 97)); */
+    background-color: rgb(48, 48, 48) !important;
     font-family: sans-serif;
     min-height: 100vh;
     color: #fff;
   }
   header {
     font-size: 1.5rem;
+    color: rgb(180, 180, 180);
   }
-  
+
   header,
   form {
-    min-height: 20vh;
+    min-height: 10vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,15 +29,22 @@
   }
   form input,
   form button {
+    background-color: rgb(33, 33, 33);
     padding: 0.5rem;
     border: none;
-    background: white;
+    /* background: white; */
     font-size: 2rem;
+  } 
+  input[type="text"], textarea {
+
+    background-color : rgb(255, 255, 255); 
+  
   }
   
   form button {
     width: 5rem;
-    color: rgb(238, 139, 97);
+    /* color: rgb(238, 139, 97); */
+    color:  rgb(0,76,155);
     background: white;
     cursor: pointer;
     transition: all 0.5s ease-out;
@@ -43,7 +52,8 @@
   
   form button:hover {
     color: white;
-    background: rgb(238, 139, 97);
+    /* background: rgb(238, 139, 97); */
+    background: rgb(0,76,155);
   }
   
   .todo-container {
@@ -74,14 +84,16 @@
   .trash-btn,
   .complete-btn {
     color: white;
-    background: #ff6f47;
+    /* background: #ff6f47; */
+    background: rgb(255,220,0);
     font-size: 1rem;
     cursor: pointer;
     border: none;
     padding: 1rem;
   }
   .complete-btn {
-    background: rgb(83, 196, 83);
+    /* background: rgb(83, 196, 83); */
+    background: rgb(0,76,155);
   }
   .fa-check,
   .fa-trash {
@@ -89,6 +101,7 @@
   }
   .todo-item {
     padding: 0rem 0.5rem;
+    align-items: center;
   }
   .completed {
     text-decoration: line-through;
