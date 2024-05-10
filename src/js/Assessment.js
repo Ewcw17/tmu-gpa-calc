@@ -5,8 +5,6 @@ const assessgrade = document.querySelector(".assess-grade");
 const assessweight = document.querySelector(".assess-weight");
 const assesslist = document.querySelector(".assess-list");
 
-const deleteButton = document.querySelector(".trash-btn");
-
 const weightAverage = document.querySelector(".average");
 const weightAchieved = document.querySelector(".total-weight")
 
@@ -29,26 +27,42 @@ function removefromtotal(grade, weight){
 function addassessment(e){
     e.preventDefault(); //Prevents the page from reloading after button press
 
-    const Newitem = document.createElement("div"); //a container for textbox, and delete button
-    Newitem.classList.add("todo");
+    if(assessgrade.value != "" && assessname.value != "" && assessweight.value != ""){
+        
+        const i = 0;  
+        const invalids = document.querySelectorAll(".inv-txt");
+        invLen = invalids.length;
+        for(let i=0; i<invLen; i++){
+            invalids[i].remove();
+        }
 
-    const newassess = document.createElement("li"); // the textbox
-    newassess.classList.add("todo-item");
-    Newitem.setAttribute("grade", assessgrade.value);
-    Newitem.setAttribute("weight", assessweight.value);
-    newassess.innerText = assessname.value + ": " + assessgrade.value + "% (" + assessweight.value + "%)";
-    Newitem.appendChild(newassess);
+        const Newitem = document.createElement("div"); //a container for textbox, and delete button
+        Newitem.classList.add("todo");
 
-    const trashButton = document.createElement("button"); //delete button
-    trashButton.innerHTML = '<i class="fas fa-trash"><i>';
-    trashButton.classList.add("trash-btn");
-    Newitem.appendChild(trashButton);
+        const newassess = document.createElement("li"); // the textbox
+        newassess.classList.add("todo-item");
+        Newitem.setAttribute("grade", assessgrade.value);
+        Newitem.setAttribute("weight", assessweight.value);
+        newassess.innerText = assessname.value + ": " + assessgrade.value + "% (" + assessweight.value + "%)";
+        Newitem.appendChild(newassess);
 
-    assesslist.appendChild(Newitem);
-    addtototal();
-    assessname.value = "";
-    assessgrade.value = "";
-    assessweight.value = "";
+        const trashButton = document.createElement("button"); //delete button
+        trashButton.innerHTML = '<i class="fas fa-trash"><i>';
+        trashButton.classList.add("trash-btn");
+        Newitem.appendChild(trashButton);
+
+        assesslist.appendChild(Newitem);
+        addtototal();
+        assessname.value = "";
+        assessgrade.value = "";
+        assessweight.value = "";
+
+    } else{
+        const invTxt = document.createElement("p");
+        invTxt.classList.add("inv-txt");
+        invTxt.innerText = "Invalid Input";
+        assesslist.appendChild(invTxt);
+    }
 }
 
 function deleteAssessment(e){ //target determines what you pressed

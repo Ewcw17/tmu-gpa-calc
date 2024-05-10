@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Course</title>
+        <script src="https://kit.fontawesome.com/13c8675779.js" crossorigin="anonymous"></script>
+        <link href="../css/styles.css" rel="stylesheet" />
+
+    </head>
+
+    <body>
+        <header>
+            <h3>Add Course</h3>
+        </header>
+        
+        <p>Term GPA:</p>
+        <p class="gpa">0</p>
+
+        
+
+
+        <form>
+            <label for="Course">Course:</label>
+            <input type="text" style="width: 290px" style="color: rgb(180, 180, 180)" id="Course" class="course-name">
+        </form> <br>
+
+        <form>
+            <label for="Grade">Grade:</label>
+            <input type="text" style="width: 90px" style="color: rgb(180, 180, 180)" id="Grade" class="course-grade">
+            <button class='course-button'>
+                <i class='fas fa-plus-square'></i>
+            </button>
+        </form>
+
+        <div class="course-container">
+            <ol class="course-list"></ol>
+        </div>
+
+    </body>
+
+    <script src="../js/Course.js"></script>
+
+</html>

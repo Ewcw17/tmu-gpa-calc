@@ -1,20 +1,3 @@
-
-// Letter Grade|	Percentage|	TMU GPA
-//   | --------     | ------- | ------- |
-// A+	| 90-100|	4.33
-// A	| 85-89|	4.00
-// A-	| 80-84|	3.67
-// B+	| 77-79|	3.33
-// B	| 73-76|	3.00
-// B-	| 70-72|	2.67
-// C+	| 67-69|	2.33
-// C	| 63-66|	2.00
-// C-	| 60-62|	1.67
-// D+	| 57-59|	1.33
-// D	| 53-56|	1.00
-// D-	| 50-52|	.67
-// F	| 0-49|	0
-// GPA Corresponding to Letter grade
 class GradeTable {
     constructor() {
         this.A_plus =
@@ -52,7 +35,7 @@ class GradeTable {
         };
         this.B =
         {
-            gpa: 4.00,
+            gpa: 3.00,
             perc: {
                 from: 73,
                 to: 76
@@ -92,7 +75,7 @@ class GradeTable {
         };
         this.D_plus =
         {
-            gpa: 1.67,
+            gpa: 1.33,
             perc: {
                 from: 57,
                 to: 59
@@ -100,7 +83,7 @@ class GradeTable {
         };
         this.D =
         {
-            gpa: 1.67,
+            gpa: 1.00,
             perc: {
                 from: 53,
                 to: 56
@@ -108,7 +91,7 @@ class GradeTable {
         };
         this.D_min =
         {
-            gpa: 1.67,
+            gpa: 0.67,
             perc: {
                 from: 50,
                 to: 52
@@ -116,7 +99,7 @@ class GradeTable {
         };
         this.F =
         {
-            gpa: 1.67,
+            gpa: 0,
             perc: {
                 from: 0,
                 to: 49
@@ -243,4 +226,81 @@ class GradeTable {
     };
 }
 
-module.exports = { GradeTable };
+//Watchers
+const addButton = document.querySelector(".course-button");
+const coursename = document.querySelector(".course-name");
+const coursegrade = document.querySelector(".course-grade");
+const courselist = document.querySelector(".course-list");
+
+const gpa = document.querySelector(".gpa");
+gpa.setAttribute("total-gpa", 0);
+gpa.setAttribute("course-num", 0);
+
+//Listeners
+addButton.addEventListener("click", addCourse);
+courselist.addEventListener("click", deleteCourse);
+
+let gradetable = new GradeTable();
+
+//Functions
+function addtototal(coursegpa){ //WORK LATER WORK LATER
+    gpa.setAttribute("course-num", parseFloat(gpa.getAttribute("course-num"))+1);
+    gpa.setAttribute("total-gpa", parseFloat(coursegpa) + parseFloat(gpa.getAttribute("total-gpa")));
+    console.log((gpa.getAttribute("total-gpa")) + "num");
+    console.log((gpa.getAttribute("course-num")) + "denom");
+    gpa.innerText = parseFloat(gpa.getAttribute("total-gpa"))/parseFloat(gpa.getAttribute("course-num"));
+}
+
+function removefromtotal(coursegpa){
+    gpa.setAttribute("course-num", parseFloat(gpa.getAttribute("course-num"))-1);
+    gpa.setAttribute("total-gpa", parseFloat(gpa.getAttribute("total-gpa")) - parseFloat(coursegpa));
+    gpa.innerText = parseFloat(gpa.getAttribute("total-gpa"))/parseFloat(gpa.getAttribute("course-num"));
+}
+
+function addCourse(e){
+    e.preventDefault(); //Prevents the page from reloading after button press
+
+    if(coursegrade.value != "" && coursename.value != ""){
+        
+        const i = 0;  
+        const invalids = document.querySelectorAll(".inv-txt");
+        invLen = invalids.length;
+        for(let i=0; i<invLen; i++){
+            invalids[i].remove();
+        }
+
+        const Newitem = document.createElement("div"); //a container for textbox, and delete button
+        Newitem.classList.add("todo");
+
+        const newcourse = document.createElement("li"); // the textbox
+        newcourse.classList.add("todo-item");
+        let coursegpa = gradetable.get_gpa(parseFloat(coursegrade.value)); //Converting to gpa/letter grade
+        Newitem.setAttribute("gpa", coursegpa);
+        newcourse.innerText = coursename.value + ": " + coursegrade.value + "%; GPA: " + coursegpa + " (" + gradetable.get_letter_grade(coursegpa) + ")";
+        Newitem.appendChild(newcourse);
+
+        const trashButton = document.createElement("button"); //delete button
+        trashButton.innerHTML = '<i class="fas fa-trash"><i>';
+        trashButton.classList.add("trash-btn");
+        Newitem.appendChild(trashButton);
+
+        courselist.appendChild(Newitem);
+        addtototal(coursegpa);
+        coursename.value = "";
+        coursegrade.value = "";
+
+    } else{
+        const invTxt = document.createElement("p");
+        invTxt.classList.add("inv-txt");
+        invTxt.innerText = "Invalid Input";
+        courselist.appendChild(invTxt);
+    }
+}
+
+function deleteCourse(e){ //target determines what you pressed
+    if (e.target.classList[0] === "trash-btn") { //checks if specifically the delete button was pressed
+    let course = e.target.parentElement; //finds the value inside the textbox
+    removefromtotal(course.getAttribute("gpa"));
+    e.target.parentElement.remove();
+    }
+}

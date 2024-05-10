@@ -44,6 +44,7 @@
     color:  rgb(0,76,155);
     background: white;
     cursor: pointer;
+    margin-left: 10px;
     transition: all 0.5s ease-out;
   }
   
@@ -72,6 +73,10 @@
     justify-content: space-between;
     align-items: center;
     transition: all 0.5s ease;
+  }
+
+  .assess-grade {
+    margin-right: 10px;
   }
   
   .todo li {
