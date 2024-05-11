@@ -139,5 +139,12 @@ class Assessment
 
 }
 
+class GPAMarker {
+constructor(name, desc,gpa){
+this.name = name; 
+this.desc = desc; 
+this.gpa = gpa;
+}
+}
 
-module.exports = { Course, Assessment,Semester,Year,DegreeTerm };
+module.exports = { Course, Assessment,Semester,Year,DegreeTerm,GPAMarker };
