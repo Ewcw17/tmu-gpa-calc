@@ -61,6 +61,8 @@ function addTodos(e) {
   // appened list
   todoList.appendChild(todoDiv);
   gpa_name_input.value = "";
+  gpa_desc_input.value ="";
+  actual_gpa_input.value = "";
 }
 
 //delete gpa marker
