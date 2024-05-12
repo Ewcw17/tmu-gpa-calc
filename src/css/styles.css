@@ -53,17 +53,17 @@
     background: rgb(0,76,155);
   }
   
-  .todo-container {
+  .gpa-marker-container {
     display: flex;
     align-items: center;
     justify-content: center;
   }
   
-  .todo-list {
+  .gpa-marker-list {
     min-width: 30%;
     list-style: none;
   }
-  .todo {
+  .gpa-marker{
     background: white;
     color: black;
     margin: 0.5rem;
@@ -74,7 +74,7 @@
     transition: all 0.5s ease;
   }
   
-  .todo li {
+  .gpa-marker li {
     flex: 1;
   }
   
@@ -111,7 +111,7 @@
   .fa-trash {
     pointer-events: none;
   }
-  .todo-item {
+  .gpa-marker-item {
     padding: 0rem 0.5rem;
     align-items: center;
   }
