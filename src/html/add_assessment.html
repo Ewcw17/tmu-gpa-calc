@@ -12,33 +12,35 @@
 
     <body>
         <header>
-            <h3>Add Assessment</h3>
+            <h1>Add Assessment</h1>
         </header>
-        
-        <p>Weighted Average:</p>
-        <p class="average">0</p> <br>
-        <p>Total Weight Achieved:</p>
-        <p class="total-weight">0</p>
 
-        
+        <div style="padding-top: 10px;" class="card">
+            <h1 >Average: </h1>
+            <h1 class="average">0%</h1>
+            <div class="card-container">
+              <h4><b class="description">Total Weight Achieved:</b> <nobr class="total-weight">0%</nobr></h4> 
+            </div>
+        </div>
 
-
-        <form>
-            <label for="Assessment">Assessment:</label>
-            <input type="text" style="width: 275px" style="color: rgb(180, 180, 180)" id="Assessment" class="assess-name">
+        <form style="display: flex">
+            <div class="assess-input">
+                <label for="Assessment">Assessment:</label>
+                <input type="text" style="width: 275px" id="Assessment" class="assess-name">
+            </div>
         </form>
 
         <form>
             <label for="Grade">  Grade:</label>
-            <input type="text" style="width: 90px" style="color: rgb(180, 180, 180)" id="Grade" class="assess-grade">
-            <label for="Weight">  Weight:</label>
-            <input type="text" style="width: 90px" style="color: rgb(180, 180, 180)" id="Weight" class="assess-weight">
+            <input type="text" style="width: 90px" id="Grade" class="assess-grade">
+            <label for="Weight" style="margin-left: 10px">  Weight:</label>
+            <input type="text" style="width: 90px;" id="Weight" class="assess-weight">
             <button class='assess-button' style="margin: 10px">
                 <i class='fas fa-plus-square'></i>
             </button>
         </form>
 
-        <div class="assess-container">
+        <div class="crs-asmt-container">
             <ol class="assess-list"></ol>
         </div>
 

@@ -15,13 +15,17 @@ assesslist.addEventListener("click", deleteAssessment);
 
 //Functions
 function addtototal(){
-    weightAverage.innerText = parseFloat(weightAverage.innerText) + (assessgrade.value * (assessweight.value*0.01));
-    weightAchieved.innerText = parseFloat(weightAchieved.innerText) + (assessweight.value*1);
+    weightAverage.innerText = parseFloat(weightAverage.innerText.replace("%", "")) + (assessgrade.value * (assessweight.value*0.01));
+    weightAverage.innerText = parseFloat(weightAverage.innerText).toFixed(3) + "%";
+    weightAchieved.innerText = parseFloat(weightAchieved.innerText.replace("%", "")) + (assessweight.value*1);
+    weightAchieved.innerText = parseFloat(weightAchieved.innerText).toFixed(3) + "%";
 }
 
 function removefromtotal(grade, weight){
-    weightAverage.innerText = parseFloat(weightAverage.innerText) - (grade * (weight*0.01));
-    weightAchieved.innerText = parseFloat(weightAchieved.innerText) - weight;
+    weightAverage.innerText = parseFloat(weightAverage.innerText.replace("%", "")) - (grade * (weight*0.01));
+    weightAverage.innerText = parseFloat(weightAverage.innerText).toFixed(3) + "%";
+    weightAchieved.innerText = parseFloat(weightAchieved.innerText.replace("%", "")) - weight;
+    weightAchieved.innerText = parseFloat(weightAchieved.innerText).toFixed(3) + "%";
 }
 
 function addassessment(e){
@@ -37,10 +41,10 @@ function addassessment(e){
         }
 
         const Newitem = document.createElement("div"); //a container for textbox, and delete button
-        Newitem.classList.add("todo");
+        Newitem.classList.add("crs-asmt-list-item");
 
         const newassess = document.createElement("li"); // the textbox
-        newassess.classList.add("todo-item");
+        newassess.classList.add("crs-asmt-text");
         Newitem.setAttribute("grade", assessgrade.value);
         Newitem.setAttribute("weight", assessweight.value);
         newassess.innerText = assessname.value + ": " + assessgrade.value + "% (" + assessweight.value + "%)";
