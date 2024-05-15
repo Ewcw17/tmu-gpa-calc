@@ -27,6 +27,8 @@
     align-content: center;
     min-height: 100vh;
     grid-gap:1em;
+    padding: 1em;
+    margin: -5em;
   }
   .title-container-1 {
     display: grid;
@@ -40,7 +42,13 @@
     grid-row: 1;
     gap:1em;
   }
-  .form-container {
+  .title-container-3 {
+    display: grid;
+    grid-column: 4;
+    grid-row: 1;
+    gap:1em;
+  }
+  [class^="form-container"] {
     display: grid;
     grid-column: 3;
     grid-row: 2;
@@ -87,7 +95,8 @@
     display: block;
   margin-right: auto;
   margin-left: auto;
-  margin-top:1em
+  margin-top:1em;
+  margin-bottom:1em;
 }
 
  .question {
@@ -117,3 +126,23 @@
     margin: 1em;
   }
 
+  .add_button {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  }
+.fa-square-plus:before {
+
+    font-size: 10em;
+    color: rgb(0,76,155);
+}
+
+.fa-trash:before {
+
+    font-size: 10em;
+    color:  rgb(255,220,0);
+}
