@@ -8,7 +8,6 @@ const {GradeTable} = require('./GradeTable.js');
 const gr = new GradeTable();
 console.log(gr);
 
-
 // add_gpa_marker  selectors
 const gpa_name_input = document.querySelector(".coursecode-inputs");
 const gpa_desc_input = document.querySelector(".gradepoint-inputs");

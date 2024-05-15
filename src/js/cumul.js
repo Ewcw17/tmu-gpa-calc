@@ -1,18 +1,25 @@
 // constants and variables
 let number = 0;
+let listofyeargpa = new Array
+const regex = "/(\d+)/)[0]"
 const seasons = ["Fall GPA", "Winter GPA", "Spring/Summer GPA","Calculate"]
 const main_container = document.querySelector(".container");
 const add_year_button = document.querySelector(".add_button");
+const remove_year_button = document.querySelector(".remove_button");
 //add year
 
 
 function add_year(e) {
     console.log("here")
     e.preventDefault();
-   
     // take input from inputs 
-    
+  
     number+=1;
+    //p
+    const year_gpa = document.createElement('p');
+    year_gpa.innerText = 0;
+    year_gpa.classList.add("yeargpa-" + number );
+    listofyeargpa.push(year_gpa);
     // div
     const form_container = document.createElement("div");
     const year = document.createElement("div");
@@ -42,6 +49,8 @@ function add_year(e) {
     
     bold_year.innerText = "Year " + number + " GPA ";
     bold_year.appendChild(calc_icon);
+    bold_year.append(":");
+    bold_year.appendChild(year_gpa)
     b_term1.innerText = seasons[0];
     b_term2.innerText = seasons[1];
     b_term3.innerText = seasons[2];
@@ -59,7 +68,12 @@ function add_year(e) {
     h1_summer.classList.add("term-h-3");
     h1_year.classList.add("year-number")
     calc_icon.className = "fa-solid fa-calculator" ;
-    
+    gpa_input_1.classList.add("gpa_input-1");
+    gpa_input_2.classList.add("gpa_input-2");
+    gpa_input_3.classList.add("gpa_input-3");
+    gpa_input_1.id = number + "-input-1";
+    gpa_input_2.id = number + "-input-2";
+    gpa_input_3.id = number + "-input-3";
 
     // Putting it all together
     h1_year.appendChild(bold_year);
@@ -78,10 +92,41 @@ function add_year(e) {
     card.appendChild(term3_container);  
     form_container.appendChild(card);
     main_container.appendChild(form_container)
+
+    gpa_input_1.addEventListener("change",year_avg)
+    gpa_input_2.addEventListener("change",year_avg)
+    gpa_input_3.addEventListener("change",year_avg)
   }
-  add_year_button.addEventListener("click", add_year);
 
 
-// calculate average
 
-//calculate cum_avg
+// remove year
+ function remove_year(e){
+  e.preventDefault();
+  let form_container = document.querySelector(".form-container"+number)
+  main_container.removeChild(form_container)
+  number-=1;
+  listofyeargpa.pop()
+ }
+
+
+ function year_avg(e){
+  e.preventDefault();
+  let index = this.id.match(/(\d+)/);
+  num = parseInt(index);
+  let num1 =   ((document.getElementById(num + "-input-1").value) || 0)
+  let num2 =  ((document.getElementById(num + "-input-2").value) || 0)
+  let num3 =((document.getElementById(num + "-input-3").value ) || 0 )
+
+  num1 = Math.round(num1 * 100) / 100
+  num2 = Math.round(num2 * 100) / 100
+  num3 = Math.round(num3 * 100) / 100
+  console.log(num1+num2+num3)
+  listofyeargpa[num-1].innerText = (num1+num2+num3)/3
+
+
+ }
+
+   //event listeners
+   add_year_button.addEventListener("click", add_year);
+   remove_year_button.addEventListener("click", remove_year)
