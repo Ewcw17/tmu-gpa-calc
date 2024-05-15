@@ -12,29 +12,28 @@
 
     <body>
         <header>
-            <h3>Add Course</h3>
+            <h1>Add Course</h1>
         </header>
         
-        <p>Term GPA:</p>
-        <p class="gpa">0</p>
-
-        
-
+        <div style="padding-top: 10px; width: 10em; height: 7em;" class="card">
+            <h1 >GPA: </h1>
+            <h2 class="gpa">0</h2>
+        </div>
 
         <form>
             <label for="Course">Course:</label>
-            <input type="text" style="width: 290px" style="color: rgb(180, 180, 180)" id="Course" class="course-name">
+            <input type="text" style="width: 170px" style="color: rgb(180, 180, 180)"id="Course" class="course-name">
         </form> <br>
 
         <form>
             <label for="Grade">Grade:</label>
             <input type="text" style="width: 90px" style="color: rgb(180, 180, 180)" id="Grade" class="course-grade">
-            <button class='course-button'>
+            <button class='course-button' style="margin: 10px">
                 <i class='fas fa-plus-square'></i>
             </button>
         </form>
 
-        <div class="course-container">
+        <div class="crs-asmt-container">
             <ol class="course-list"></ol>
         </div>
 

@@ -209,4 +209,27 @@
  
 }
 
+/* Ethan stuff */
+.crs-asmt-container {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.crs-asmt-list-item{
+    background: white;
+    color: black;
+    margin: 0.5rem; /* distance between items */
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.5s ease;
+  }
+  .crs-asmt-text {
+    margin-left: 40px;
+    margin-right: 10px;
+    flex: 1;
+  }
+
 
