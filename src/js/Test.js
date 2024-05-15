@@ -1,6 +1,10 @@
 // import {expect, jest, test} from '@jest/globals';
+
 const {Course,Semester,Year,DegreeTerm,Assessment} = require('./tmu-gpa.js');
 const {GradeTable} = require('./GradeTable.js');
+
+// import {Course,Semester,Year,DegreeTerm,Assessment} from './tmu-gpa.js'
+// import{GradeTable}  from './GradeTable.js'
 // g = new GradeTable();
 console.log("Unit Tests") 
 let d = new DegreeTerm("Computer Engineer");

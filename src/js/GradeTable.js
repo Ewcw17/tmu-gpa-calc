@@ -244,3 +244,4 @@ class GradeTable {
 }
 
 module.exports = { GradeTable };
+// export {GradeTable};

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://kit.fontawesome.com/13c8675779.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/13c8675779.js" crossorigin="anonymous" type="module"></script>
     <link href="../css/styles.css" rel="stylesheet" />
 
 </head>
@@ -13,6 +13,13 @@
  
     <header>
       <h1>Important GPA</h1>
+      <div class="card">
+        <h1 class="display_gpa">HOW</h1>
+        <div class="card-container">
+          <h4><b class="display_gpa_name">press blue check button to see info</b> <p class="display_gpa_desc">press yellow button to delete</p> </h4> 
+          
+        </div>
+      </div>
     </header>
 
 
@@ -21,29 +28,23 @@
     <form>
 
       <!--     <label for="gpa_desc">GPA Name:</label> -->
-      <input type="text" placeholder="Name of GPA" class='gpa_name-inputs'>
-      <button class='gpa-marker-button'>
+      <input type="text" placeholder="COURSE CODE" class='coursecode-inputs'>
+      <button class='addcourse-button'>
         <i class='fas fa-plus-square'></i>
       </button>
   
     </form>
     <form>
       <!--     <label for="gpa_desc">GPA description:</label> -->
-      <input type="text" placeholder="Why is it important?" class='gpa_desc-inputs'>
+      <input type="text" placeholder="GPA" class='gradepoint-inputs'>
 
     </form>
   
-    <form> <input type="text"  placeholder="4.33" class='actual_gpa-inputs'> </form>
-    <div class="card">
-      <h1 class="display_gpa"> 3.32</h1>
-      <div class="card-container">
-        <h4><b class="display_gpa_name">John Doe</b> <p class="display_gpa_desc">This Gpa states is about probabtion</p> </h4> 
-        
-      </div>
-    </div>
-    <div class="gpa-marker-container">
+    <!-- <form> <input type="text"  placeholder="4.33" class='actual_gpa-inputs'> </form> -->
+   
+    <div class="addcourse-container">
   
-      <ul class="gpa-marker-list"></ul>
+      <ul class="addcourse-list"></ul>
     </div>
   
   </body>

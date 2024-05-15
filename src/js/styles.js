@@ -1,12 +1,21 @@
+// import {Course,Semester,Year,DegreeTerm,Assessment} from './tmu-gpa.js'
+// import{GradeTable}  from './GradeTable.js'
+
+
+const {Course,Semester,Year,DegreeTerm,Assessment} = require('./tmu-gpa.js');
+const {GradeTable} = require('./GradeTable.js');
+
+const gr = new GradeTable();
+console.log(gr);
 
 
 // add_gpa_marker  selectors
-const gpa_name_input = document.querySelector(".gpa_name-inputs");
-const gpa_desc_input = document.querySelector(".gpa_desc-inputs");
-const actual_gpa_input = document.querySelector(".actual_gpa-inputs");
-const todoButton = document.querySelector(".gpa-marker-button");
-const todoList = document.querySelector(".gpa-marker-list");
-const filterOption = document.querySelector(".filter-gpa-markers");
+const gpa_name_input = document.querySelector(".coursecode-inputs");
+const gpa_desc_input = document.querySelector(".gradepoint-inputs");
+// const actual_gpa_input = document.querySelector(".actual_gpa-inputs");
+const todoButton = document.querySelector(".addcourse-button");
+const todoList = document.querySelector(".addcourse-list");
+const filterOption = document.querySelector(".filter-addcourses");
 const list_of_GPAMarkers = new Array();
 let display_gpa_name = document.querySelector(".display_gpa_name");
 let display_gpa_desc = document.querySelector(".display_gpa_desc ");
@@ -14,7 +23,7 @@ let display_actual_gpa = document.querySelector(".display_gpa");
 const gpa_name_item = document.querySelector(".gpa_name_item")
 let number = 0;
 
-
+console.log(number);
 // Home html query selects
 const select = document.getElementById("basic-select");
 const menu = document.getElementById("option-select");
@@ -27,24 +36,26 @@ const animTime = 120;
 
 //filterOption.addEventListener("click", filterTodo);
 
+
+
 // function add gpa markers
-function addTodos(e) {
+function add_gpa_markers(e) {
   
   e.preventDefault();
   console.log("here: dfs"  + gpa_name_input.value + " " );
   // take input from inputs 
-  g = {gpa_name: gpa_name_input.value, gpa_desc: gpa_desc_input.value, actual_gpa: actual_gpa_input.value};
+
   list_of_GPAMarkers.push(g);
   console.log(list_of_GPAMarkers)
   //tododiv
   const todoDiv = document.createElement("div");
-  todoDiv.classList.add("gpa-marker");
+  todoDiv.classList.add("addcourse");
 
   //new todo
-  const newTodo = document.createElement("li");
-  newTodo.classList.add("gpa_name_item");
-  newTodo.innerText = gpa_name_input.value;
-  todoDiv.appendChild(newTodo);
+  const new_gpa_list_element = document.createElement("li");
+  new_gpa_list_element.classList.add("gpa_name_item");
+  new_gpa_list_element.innerText = gpa_name_input.value;
+  todoDiv.appendChild(new_gpa_list_element);
 
   //checked button
   const compleatedButton = document.createElement("button");
@@ -128,10 +139,10 @@ function getTodos() {
     todoDiv.classList.add("todo");
 
     //create li
-    const newTodo = document.createElement("li");
-    newTodo.classList.add("todo-item");
-    newTodo.innerText = todo;
-    todoDiv.appendChild(newTodo);
+    const new_gpa_list_element = document.createElement("li");
+    new_gpa_list_element.classList.add("todo-item");
+    new_gpa_list_element.innerText = todo;
+    todoDiv.appendChild(new_gpa_list_element);
 
     //checked button
     const compleatedButton = document.createElement("button");
@@ -154,7 +165,7 @@ function getTodos() {
 
 //event listeners
 document.addEventListener("DOMContentLoaded", getTodos);
-todoButton.addEventListener("click", addTodos);
+todoButton.addEventListener("click", add_gpa_markers);
 todoList.addEventListener("click", deleteCheck);
 
 
