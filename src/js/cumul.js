@@ -1,11 +1,14 @@
 // constants and variables
 let number = 0;
-let listofyeargpa = new Array
+let listofyeargpa = new Array()
+const cumulative_gpa = 0;
 const regex = "/(\d+)/)[0]"
 const seasons = ["Fall GPA", "Winter GPA", "Spring/Summer GPA","Calculate"]
 const main_container = document.querySelector(".container");
 const add_year_button = document.querySelector(".add_button");
 const remove_year_button = document.querySelector(".remove_button");
+const cumm_gpa = document.querySelector(".cum_gpa");
+
 //add year
 
 
@@ -20,6 +23,7 @@ function add_year(e) {
     year_gpa.innerText = 0;
     year_gpa.classList.add("yeargpa-" + number );
     listofyeargpa.push(year_gpa);
+
     // div
     const form_container = document.createElement("div");
     const year = document.createElement("div");
@@ -96,6 +100,7 @@ function add_year(e) {
     gpa_input_1.addEventListener("change",year_avg)
     gpa_input_2.addEventListener("change",year_avg)
     gpa_input_3.addEventListener("change",year_avg)
+    year_gpa.addEventListener("change",cum_gpa);
   }
 
 
@@ -107,6 +112,7 @@ function add_year(e) {
   main_container.removeChild(form_container)
   number-=1;
   listofyeargpa.pop()
+  cum_gpa();
  }
 
 
@@ -122,10 +128,20 @@ function add_year(e) {
   num2 = Math.round(num2 * 100) / 100
   num3 = Math.round(num3 * 100) / 100
   console.log(num1+num2+num3)
-  listofyeargpa[num-1].innerText = (num1+num2+num3)/3
-
-
+  listofyeargpa[num-1].innerText =  Math.round(((num1+num2+num3)/3) * 100) / 100    
+  console.log(listofyeargpa)
+  cum_gpa();
  }
+  //
+  function cum_gpa(){
+    let sum =  0;
+    for (const iterator of listofyeargpa) {
+      sum += parseFloat(iterator.innerText)
+    }
+    cumm_gpa.innerText =  Math.round( (sum/listofyeargpa.length) * 100) / 100 ;
+
+  }
+
 
    //event listeners
    add_year_button.addEventListener("click", add_year);
