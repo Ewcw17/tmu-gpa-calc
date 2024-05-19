@@ -1,5 +1,6 @@
 // constants and variables
 let number = 0;
+
 let listofyeargpa = new Array()
 const cumulative_gpa = 0;
 const regex = "/(\d+)/)[0]"
@@ -118,20 +119,28 @@ function add_year(e) {
 
  function year_avg(e){
   e.preventDefault();
+  let allinputs = new Array()
   let index = this.id.match(/(\d+)/);
   num = parseInt(index);
-  let num1 =   ((document.getElementById(num + "-input-1").value) || 0)
-  let num2 =  ((document.getElementById(num + "-input-2").value) || 0)
-  let num3 =((document.getElementById(num + "-input-3").value ) || 0 )
-
-  num1 = Math.round(num1 * 100) / 100
-  num2 = Math.round(num2 * 100) / 100
-  num3 = Math.round(num3 * 100) / 100
-  console.log(num1+num2+num3)
-  listofyeargpa[num-1].innerText =  Math.round(((num1+num2+num3)/3) * 100) / 100    
+  allinputs.push(document.getElementById(num + "-input-1").value);
+  allinputs.push(document.getElementById(num + "-input-2").value);
+  allinputs.push(document.getElementById(num + "-input-3").value);
+  let sum = 0;
+  let numofnonzeroes = 0;
+  console.log(sum);
+  for (const iterator of allinputs) {
+    if(iterator != 0)
+      {
+        sum += parseFloat(iterator);
+        numofnonzeroes ++;
+      }
+  }
+  listofyeargpa[num-1].innerText =  Math.round((sum/numofnonzeroes)* 100) / 100 ;   
   console.log(listofyeargpa)
   cum_gpa();
  }
+
+
   //
   function cum_gpa(){
     let sum =  0;
