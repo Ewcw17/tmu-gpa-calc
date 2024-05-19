@@ -1,6 +1,8 @@
 
 
 const {GradeTable} = require('./GradeTable');
+// import{GradeTable}  from './GradeTable.js'
+
 class DegreeTerm
  {
     constructor(nameofdegree)
@@ -148,3 +150,4 @@ this.gpa = gpa;
 }
 
 module.exports = { Course, Assessment,Semester,Year,DegreeTerm,GPAMarker };
+// export{ Course, Assessment,Semester,Year,DegreeTerm,GPAMarker };

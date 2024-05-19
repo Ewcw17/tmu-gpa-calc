@@ -53,17 +53,17 @@
     background: rgb(0,76,155);
   }
   
-  .gpa-marker-container {
+  .addcourse-container {
     display: flex;
     align-items: center;
     justify-content: center;
   }
   
-  .gpa-marker-list {
+  .addcourse-list {
     min-width: 30%;
     list-style: none;
   }
-  .gpa-marker{
+  .addcourse{
     background: white;
     color: black;
     margin: 0.5rem;
@@ -74,7 +74,7 @@
     transition: all 0.5s ease;
   }
   
-  .gpa-marker li {
+  .addcourse li {
     flex: 1;
   }
   
@@ -111,7 +111,7 @@
   .fa-trash {
     pointer-events: none;
   }
-  .gpa-marker-item {
+  .addcourse-item {
     padding: 0rem 0.5rem;
     align-items: center;
   }
@@ -208,5 +208,28 @@
   align-items: center;
  
 }
+
+/* Ethan stuff */
+.crs-asmt-container {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.crs-asmt-list-item{
+    background: white;
+    color: black;
+    margin: 0.5rem; /* distance between items */
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.5s ease;
+  }
+  .crs-asmt-text {
+    margin-left: 40px;
+    margin-right: 10px;
+    flex: 1;
+  }
 
 

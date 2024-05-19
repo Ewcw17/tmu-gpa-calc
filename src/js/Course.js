@@ -246,15 +246,15 @@ let gradetable = new GradeTable();
 function addtototal(coursegpa){ //WORK LATER WORK LATER
     gpa.setAttribute("course-num", parseFloat(gpa.getAttribute("course-num"))+1);
     gpa.setAttribute("total-gpa", parseFloat(coursegpa) + parseFloat(gpa.getAttribute("total-gpa")));
-    console.log((gpa.getAttribute("total-gpa")) + "num");
-    console.log((gpa.getAttribute("course-num")) + "denom");
     gpa.innerText = parseFloat(gpa.getAttribute("total-gpa"))/parseFloat(gpa.getAttribute("course-num"));
+    gpa.innerText = parseFloat(gpa.innerText).toFixed(2);
 }
 
 function removefromtotal(coursegpa){
     gpa.setAttribute("course-num", parseFloat(gpa.getAttribute("course-num"))-1);
     gpa.setAttribute("total-gpa", parseFloat(gpa.getAttribute("total-gpa")) - parseFloat(coursegpa));
     gpa.innerText = parseFloat(gpa.getAttribute("total-gpa"))/parseFloat(gpa.getAttribute("course-num"));
+    gpa.innerText = parseFloat(gpa.innerText).toFixed(2);
 }
 
 function addCourse(e){
@@ -270,10 +270,10 @@ function addCourse(e){
         }
 
         const Newitem = document.createElement("div"); //a container for textbox, and delete button
-        Newitem.classList.add("todo");
+        Newitem.classList.add("crs-asmt-list-item");
 
         const newcourse = document.createElement("li"); // the textbox
-        newcourse.classList.add("todo-item");
+        newcourse.classList.add("crs-asmt-text");
         let coursegpa = gradetable.get_gpa(parseFloat(coursegrade.value)); //Converting to gpa/letter grade
         Newitem.setAttribute("gpa", coursegpa);
         newcourse.innerText = coursename.value + ": " + coursegrade.value + "%; GPA: " + coursegpa + " (" + gradetable.get_letter_grade(coursegpa) + ")";
