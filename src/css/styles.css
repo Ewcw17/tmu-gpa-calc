@@ -202,7 +202,7 @@
 
 .card-container {
   /* width: 100%; */
-   height: 10vh; 
+  height: 10vh; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -216,6 +216,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .crs-asmt-list-item{
     background: white;
     color: black;
@@ -230,6 +231,23 @@
     margin-left: 40px;
     margin-right: 10px;
     flex: 1;
+  }
+
+  .wrapper{
+    align-items: center;
+    justify-content: center;
+  }
+
+  .all{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-holder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
 
