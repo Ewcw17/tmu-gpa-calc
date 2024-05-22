@@ -20,8 +20,11 @@ function add_year(e) {
   
     number+=1;
     //p
-    const year_gpa = document.createElement('p');
+    const title_gpa =  document.createElement('h1');
+    const year_gpa = document.createElement('h1');
     year_gpa.innerText = 0;
+    year_gpa.style.fontSize = "3em";
+    title_gpa.style.fontSize = "3em"
     year_gpa.classList.add("yeargpa-" + number );
     listofyeargpa.push(year_gpa);
 
@@ -33,8 +36,10 @@ function add_year(e) {
     const term2_container = document.createElement("div");
     const term3_container = document.createElement("div");
     const term4_container = document.createElement("div");
+    const term5_container = document.createElement("div");
     // bold (Text in bold)
     const bold_year = document.createElement("b");
+    const bold_year_gpa = document.createElement("b");
     const b_term1 = document.createElement("b");
     const b_term2 = document.createElement("b");
     const b_term3 = document.createElement("b");
@@ -52,22 +57,28 @@ function add_year(e) {
     const calc_icon = document.createElement("i"); 
     // Inner Text
     
-    bold_year.innerText = "Year " + number + " GPA ";
+    bold_year.innerText = "Year " + number;
+    title_gpa.innerText = "GPA"
     bold_year.appendChild(calc_icon);
-    bold_year.append(":");
-    bold_year.appendChild(year_gpa)
+    // bold_year.append(":");
+    bold_year_gpa.appendChild(year_gpa)
     b_term1.innerText = seasons[0];
     b_term2.innerText = seasons[1];
     b_term3.innerText = seasons[2];
     // styling
     form_container.classList.add("form-container"+number);
-    form_container.style.gridColumn = number; 
-    form_container.style.gridRow = 2;
+    form_container.style.gridColumnStart =2;
+    form_container.style.gridColumnEnd =5;
+    form_container.style.gridRow = 1+number;
     card.classList.add("card");
     term1_container.classList.add("term-card-1-container");
+    term1_container.gridColumn =1;
     term2_container.classList.add("term-card-2-container");
+    term2_container.gridColumn =2;
     term3_container.classList.add("term-card-3-container");
+    term3_container.gridColumn =3;
     term4_container.classList.add("term-card-4-container");
+    term4_container.gridColumn =4;
     h1_fall.classList.add("term-h-1");
     h1_winter.classList.add("term-h-2");
     h1_summer.classList.add("term-h-3");
@@ -92,9 +103,12 @@ function add_year(e) {
     term2_container.appendChild(gpa_input_2);
     term3_container.appendChild(h1_summer);
     term3_container.appendChild(gpa_input_3); 
+    term4_container.appendChild(title_gpa)
+    term4_container.appendChild(year_gpa)
     card.appendChild(term1_container);
     card.appendChild(term2_container);
     card.appendChild(term3_container);  
+    card.appendChild(term4_container);  
     form_container.appendChild(card);
     main_container.appendChild(form_container)
 
