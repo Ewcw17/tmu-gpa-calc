@@ -14,34 +14,39 @@
         <header>
             <h1>Add Assessment</h1>
         </header>
+        <div class="all" style="min-width: 400px;">
+            <div class="wrapper">
+                <div class="card-holder">
+                    <div style="padding-top: 10px;" class="card">
+                        <h1>Average: </h1>
+                        <h1 class="average">0%</h1>
+                        <div>
+                            <h4><b class="description">Total Weight Achieved:</b> <nobr class="total-weight">0%</nobr></h4> 
+                        </div>
+                    </div>
+                </div>
 
-        <div style="padding-top: 10px;" class="card">
-            <h1 >Average: </h1>
-            <h1 class="average">0%</h1>
-            <div class="card-container">
-              <h4><b class="description">Total Weight Achieved:</b> <nobr class="total-weight">0%</nobr></h4> 
+                <form style="display: flex">
+                    <div class="assess-input">
+                        <label for="Assessment">Assessment:</label>
+                        <input type="text" style="width: 275px" id="Assessment" class="assess-name">
+                    </div>
+                </form>
+
+                <form>
+                    <label for="Grade">  Grade:</label>
+                    <input type="text" style="width: 90px" id="Grade" class="assess-grade">
+                    <label for="Weight" style="margin-left: 10px">  Weight:</label>
+                    <input type="text" style="width: 90px;" id="Weight" class="assess-weight">
+                    <button class='assess-button' style="margin: 10px">
+                        <i class='fas fa-plus-square'></i>
+                    </button>
+                </form>
+
+                <div class="crs-asmt-container">
+                    <ol class="assess-list"></ol>
+                </div>
             </div>
-        </div>
-
-        <form style="display: flex">
-            <div class="assess-input">
-                <label for="Assessment">Assessment:</label>
-                <input type="text" style="width: 275px" id="Assessment" class="assess-name">
-            </div>
-        </form>
-
-        <form>
-            <label for="Grade">  Grade:</label>
-            <input type="text" style="width: 90px" id="Grade" class="assess-grade">
-            <label for="Weight" style="margin-left: 10px">  Weight:</label>
-            <input type="text" style="width: 90px;" id="Weight" class="assess-weight">
-            <button class='assess-button' style="margin: 10px">
-                <i class='fas fa-plus-square'></i>
-            </button>
-        </form>
-
-        <div class="crs-asmt-container">
-            <ol class="assess-list"></ol>
         </div>
 
     </body>
