@@ -52,8 +52,11 @@ function add_year(e) {
     const h1_calculate = document.createElement("h1");
     //Inputs
     const gpa_input_1 = document.createElement("input");
+    gpa_input_1.type = "number"
     const gpa_input_2 = document.createElement("input");
+    gpa_input_2.type = "number"
     const gpa_input_3 = document.createElement("input");
+    gpa_input_3.type = "number"
     const calc_icon = document.createElement("i"); 
     // Inner Text
     
